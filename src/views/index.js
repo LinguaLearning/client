@@ -1,0 +1,12 @@
+export { default as HomePageView } from "./public/HomePageView";
+export { default as AboutPageView } from "./public/AboutPageView";
+export { default as PricingPageView } from "./public/PricingPageView";
+export { default as OurIdeologyPageView } from "./public/OurIdeologyPageView";
+export { default as LoginPageView } from "./authentication/LoginPageView";
+export { default as SignUpPageVIew } from "./authentication/SignUpPageVIew";
+export { default as ForgotPassword } from "./authentication/ForgotPassword";
+export { default as DashboardPageView } from "./private/DashboardPageView";
+export { default as DashboardTools } from "./private/DashboardTools";
+export { default as DashboardResources } from "./private/DashboardResources";
+export { default as MyProfile } from "./private/MyProfile";
+export { default as UserSettings } from "./private/UserSettings";

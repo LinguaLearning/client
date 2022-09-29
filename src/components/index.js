@@ -1,0 +1,17 @@
+export { default as Layout } from "./layout/Layout";
+export { default as Navbar } from "./layout/navbar/Navbar";
+export { default as Footer } from "./layout/footer/Footer";
+export { default as DashboardFooter } from "./Dashboard/footer/DashboardFooter";
+export { default as AuthForm } from "./Forms/authForm/AuthForm";
+export { default as ForgotPasswordForm } from "./Forms/forgetPasswordForm/ForgotPasswordForm";
+export { default as DashboardLayout } from "./Dashboard/dashboardLayout/DashboardLayout";
+export { default as DashboardNavbar } from "./Dashboard/navbar/DashboardNavbar";
+export { default as ContainerLayout } from "./Dashboard/containerLayout/ContainerLayout";
+export { default as Settings } from "./Dashboard/editSettings/Settings";
+export { default as ProfileInfo } from "./Dashboard/editSettings/ProfileInfo";
+export { default as Account } from "./Dashboard/editSettings/settingTabs/Account";
+export { default as SettingTab } from "./Dashboard/editSettings/settingTabs/SettingTab";
+export { default as LanguageTab } from "./Dashboard/editSettings/settingTabs/LanguageTab";
+export { default as Lessons } from "./Dashboard/DashboardAction/Lessons";
+export { default as Tools } from "./Dashboard/DashboardAction/Tools";
+export { default as Resources } from "./Dashboard/DashboardAction/Resources";

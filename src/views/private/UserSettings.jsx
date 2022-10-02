@@ -1,11 +1,10 @@
 import React from "react";
-import { ContainerLayout } from "../../components";
-import { Settings } from "../../components";
+import { ContainerLayout, Settings } from "../../components";
 
 const UserSettings = () => {
   return (
     <ContainerLayout>
-      <Settings/>
+      <Settings />
     </ContainerLayout>
   );
 };

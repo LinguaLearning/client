@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Title, SettingMenuList, List, ListActive } from "./SettingsStyled";
 import { SettingTab, Account, LanguageTab } from "../../";
 
 const Settings = () => {
@@ -22,26 +21,37 @@ const Settings = () => {
 
   return (
     <>
-      <Title>Settings</Title>
-      <SettingMenuList>
+      <h1 className="font-bold text-3xl">Settings</h1>
+      <ul className="flex flex-row mt-7 border-b space-x-5 border-[rgba(170, 170, 170, 0.56)]">
         {options.map((tabs, idx) => {
           if (tabs.tabName === activeComponent) {
-            return <ListActive key={idx}>{tabs.tabName}</ListActive>;
+            return (
+              <li
+                className="text-blue-600 text-sm md:text-base border-b pb-1.5 border-b-blue-600"
+                key={idx}
+              >
+                {tabs.tabName}
+              </li>
+            );
           } else {
             return (
-              <List key={idx} onClick={() => setActiveComponent(tabs.tabName)}>
+              <li
+                className="pb-1.5 text-sm md:text-base cursor-pointer"
+                key={idx}
+                onClick={() => setActiveComponent(tabs.tabName)}
+              >
                 {tabs.tabName}
-              </List>
+              </li>
             );
           }
         })}
-      </SettingMenuList>
-      {options.map((tab, idx) => {
-        if (tab.tabName === activeComponent) {
-          return <div key={idx}>{tab.component}</div>;
-        }
-        return <></>;
-      })}
+      </ul>
+      {options.map(
+        (tab, idx) =>
+          tab.tabName === activeComponent && (
+            <div key={idx}>{tab.component}</div>
+          )
+      )}
     </>
   );
 };

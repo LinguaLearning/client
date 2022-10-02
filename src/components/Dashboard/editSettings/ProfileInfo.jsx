@@ -1,72 +1,56 @@
 import React from "react";
-import {
-  Title,
-  ProfileContent,
-  Row,
-  Profile,
-  ProfileImage,
-  FollowButton,
-  GeneralInfo,
-  ListItem,
-  TagTitle,
-  TagName,
-  Bio,
-  Achievments,
-  Interests,
-  InfoContainer,
-  SectionTitle,
-} from "./ProfileInfoStyled";
 import profilepicture from "../../../assets/avatar.jpg";
-import { useColors } from "../../../context/StylingContext/ColorContext";
 import { useAuth } from "../../../context/AuthContext";
 
 const ProfileInfo = () => {
-  const globalColors = useColors();
   const { currentUser, profileDetails } = useAuth();
   return (
     <>
-      <Title>My Profile</Title>
-      <ProfileContent>
-        <Row>
-          <Profile>
-            <ProfileImage src={profilepicture} />
-            <FollowButton
-              secondary={globalColors.secondary}
-              text={globalColors.text}
+      <h1 className="text-2xl font-medium">My Profile</h1>
+      <div>
+        <div className="flex justify-between my-4">
+          <div>
+            <img
+              src={profilepicture}
+              alt=""
+              className="w-52 object-cover aspect-square rounded-full"
+            />
+            <button
+              className={`block mx-auto mt-4 bg-secondary text-white py-2.5 px-10 rounded font-semibold`}
             >
               Follow
-            </FollowButton>
-          </Profile>
-          <GeneralInfo>
-            <ListItem>
-              <TagTitle>Name:</TagTitle>
-              <TagName>{profileDetails?.username}</TagName>
-            </ListItem>
-            <ListItem>
-              <TagTitle>Email:</TagTitle>
-              <TagName>{currentUser.email}</TagName>
-            </ListItem>
-            <ListItem>
-              <TagTitle>Language:</TagTitle>
-              <TagName>{profileDetails.profileInfo?.language}</TagName>
-            </ListItem>
-          </GeneralInfo>
-        </Row>
-        <InfoContainer>
-          <SectionTitle>Bio</SectionTitle>
-          <Bio>{profileDetails.profileInfo?.bio}</Bio>
-        </InfoContainer>
-        <Row>
-          <InfoContainer style={{ width: "50%" }}>
-            <SectionTitle>Achievments</SectionTitle>
-            <Achievments>{profileDetails.profileInfo?.achievments}</Achievments>
-          </InfoContainer>
-          <InfoContainer style={{ width: "50%" }}>
-            <SectionTitle>Interests</SectionTitle>
-            <Interests>{profileDetails.profileInfo?.interests}</Interests>
-          </InfoContainer>
-        </Row>
-      </ProfileContent>
+            </button>
+          </div>
+          <div className="w-1/2 space-y-4">
+            <div className=" space-x-2">
+              <span className="font-semibold">Name:</span>
+              <span>{profileDetails?.username}</span>
+            </div>
+            <div className=" space-x-2">
+              <span className="font-semibold">Email:</span>
+              <span>{currentUser.email}</span>
+            </div>
+            <div className=" space-x-2">
+              <span className="font-semibold">Language:</span>
+              <span>{profileDetails.profileInfo?.language}</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h1 className="text-xl font-semibold">Bio</h1>
+          <p>{profileDetails.profileInfo?.bio}</p>
+        </div>
+        <div className="flex justify-between my-4">
+          <div style={{ width: "50%" }}>
+            <h1 className="text-xl font-semibold">Achievments</h1>
+            <div>{profileDetails.profileInfo?.achievments}</div>
+          </div>
+          <div style={{ width: "50%" }}>
+            <h1 className="text-xl font-semibold">Interests</h1>
+            <div>{profileDetails.profileInfo?.interests}</div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

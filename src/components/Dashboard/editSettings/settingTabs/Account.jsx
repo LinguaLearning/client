@@ -1,21 +1,9 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Title,
-  Form,
-  Input,
-  Label,
-  InputField,
-  Button,
-} from "./AccountStyled";
-import { useColors } from "../../../../context/StylingContext/ColorContext";
 import { useAuth } from "../../../../context/AuthContext";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../../../Firebase";
 
 const Account = () => {
-  const globalColors = useColors();
-
   const { currentUser, profileDetails } = useAuth();
 
   const [username, setusername] = useState(profileDetails?.username);
@@ -47,74 +35,92 @@ const Account = () => {
   };
 
   return (
-    <Box>
-      <Title>Account Information</Title>
-      <Form>
-        <InputField>
-          <Label>Username</Label>
-          <Input
+    <div className="mt-7">
+      <h1 className="font-medium text-xl sm:text-2xl md:text-3xl">
+        Account Information
+      </h1>
+      <form className="space-y-4 my-2 flex flex-col">
+        <div>
+          <label className="text-sm font-medium mb-1 text-gray-600">
+            Username
+          </label>
+          <input
+            className="w-full md:w-[70%] lg:w-[45%] outline-none block p-2.5 rounded border border-gray-300"
             placeholder="Username"
             type="text"
             value={username}
             onChange={(e) => setusername(e.target.value)}
           />
-        </InputField>
-        <InputField>
-          <Label>Email</Label>
-          <Input
+        </div>
+        <div>
+          <label className="text-sm font-medium mb-1 text-gray-600">
+            Email
+          </label>
+          <input
+            className="w-full md:w-[70%] lg:w-[45%] outline-none block p-2.5 rounded border border-gray-300"
             placeholder="Email"
             type="email"
             value={email}
             onChange={(e) => setemail(e.target.value)}
           />
-        </InputField>
-        <InputField>
-          <Label>Phone Number</Label>
-          <Input
+        </div>
+        <div>
+          <label className="text-sm font-medium mb-1 text-gray-600">
+            Phone Number
+          </label>
+          <input
+            className="w-full md:w-[70%] lg:w-[45%] outline-none block p-2.5 rounded border border-gray-300"
             placeholder="Phone Number"
             type="text"
             value={phone}
             onChange={(e) => setphone(e.target.value)}
           />
-        </InputField>
-        <InputField>
-          <Label>First Name</Label>
-          <Input
+        </div>
+        <div>
+          <label className="text-sm font-medium mb-1 text-gray-600">
+            First Name
+          </label>
+          <input
+            className="w-full md:w-[70%] lg:w-[45%] outline-none block p-2.5 rounded border border-gray-300"
             placeholder="First Name"
             type="text"
             value={firstName}
             onChange={(e) => setfirstName(e.target.value)}
           />
-        </InputField>
-        <InputField>
-          <Label>Last Name</Label>
-          <Input
+        </div>
+        <div>
+          <label className="text-sm font-medium mb-1 text-gray-600">
+            Last Name
+          </label>
+          <input
+            className="w-full md:w-[70%] lg:w-[45%] outline-none block p-2.5 rounded border border-gray-300"
             placeholder="Last Name"
             type="text"
             value={lastName}
             onChange={(e) => setlastName(e.target.value)}
           />
-        </InputField>
-        <InputField>
-          <Label>Birdhday</Label>
-          <Input
+        </div>
+        <div>
+          <label className="text-sm font-medium mb-1 text-gray-600">
+            Birdhday
+          </label>
+          <input
+            className="w-full md:w-[70%] lg:w-[45%] outline-none block p-2.5 rounded border border-gray-300"
             type="date"
             value={birthDate}
             onChange={(e) => {
               setbirthDate(e.target.value);
             }}
           />
-        </InputField>
-        <Button
-          shadowHard={globalColors.shadowHard}
-          text={globalColors.text}
-          secondary={globalColors.secondary}
+        </div>
+        <button
+          className="self-center md:self-start w-full md:w-auto py-3.5 duration-500 transition-colors ease-in-out hover:bg-shadowHard rounded-md px-7 bg-secondary text-white font-medium text-xs md:text-base"
           onClick={handleUpdate}
         >
           Apply Changes
-        </Button>
-      </Form>
-    </Box>
+        </button>
+      </form>
+    </div>
   );
 };
 

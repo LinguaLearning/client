@@ -1,16 +1,12 @@
 import React from "react";
 import { Tools } from "../../components";
-import { Container, Title } from "./ViewStyling";
-import { useColors } from "../../context/StylingContext/ColorContext";
 
 const DashboardTools = () => {
-  const globalColors = useColors();
-
   return (
-    <Container>
-      <Title secondary={globalColors.secondary}>Tools</Title>
+    <div className="mx-auto my-10 w-[85%] lg:w-[80%]">
+      <h1 className="text-secondary text-4xl font-bold mb-4">Tools</h1>
       <Tools />
-    </Container>
+    </div>
   );
 };
 

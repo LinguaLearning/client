@@ -1,11 +1,8 @@
-import { Container, Title } from "./ViewStyling";
 import { Lessons } from "../../components";
-import { useColors } from "../../context/StylingContext/ColorContext";
 import { getAllLessons } from "../../server/lessons";
 import { useState, useEffect } from "react";
 
 const DashboardPageView = () => {
-  const globalColors = useColors();
   const [lessonsData, setLessonsData] = useState([]);
   useEffect(() => {
     getAllLessons().then((data) => setLessonsData(data));
@@ -15,10 +12,10 @@ const DashboardPageView = () => {
 
   getAllLessons();
   return (
-    <Container>
-      <Title secondary={globalColors.secondary}>The Lessons</Title>
+    <div className="mx-auto my-10 w-[85%] lg:w-[80%]">
+      <h1 className="text-secondary text-4xl font-bold">The Lessons</h1>
       <Lessons lessonsData={lessonsData} />
-    </Container>
+    </div>
   );
 };
 

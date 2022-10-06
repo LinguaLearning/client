@@ -1,13 +1,4 @@
 import React from "react";
-import {
-  Footer,
-  Container,
-  Box,
-  Row,
-  LinkItem,
-  Credit,
-} from "./DashboardFooterStyled";
-import { useColors } from "../../../context/StylingContext/ColorContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebookSquare,
@@ -16,55 +7,39 @@ import {
 } from "@fortawesome/fontawesome-free-brands";
 
 const DashboardFooter = () => {
-  const globalColors = useColors();
   return (
-    <Footer bgColor={globalColors.secondary}>
-      <Container>
-        <Box>
-          <Row>
-            <FontAwesomeIcon
-              style={{
-                fontSize: "35px",
-                padding: "0 10px",
-                color: globalColors.text,
-                cursor: "pointer",
-              }}
-              icon={faFacebookSquare}
-            />
-            <FontAwesomeIcon
-              style={{
-                fontSize: "35px",
-                padding: "0 10px",
-                cursor: "pointer",
-                color: globalColors.text,
-              }}
-              icon={faInstagram}
-            />
-            <FontAwesomeIcon
-              style={{
-                fontSize: "35px",
-                padding: "0 10px",
-                color: globalColors.text,
-                cursor: "pointer",
-              }}
-              icon={faTwitterSquare}
-            />
-          </Row>
-          <Row>
-            <LinkItem color={globalColors.text}>Info</LinkItem>
-            <LinkItem color={globalColors.text}>Support</LinkItem>
-            <LinkItem color={globalColors.text}>Marketing</LinkItem>
-          </Row>
-          <Row>
-            <LinkItem color={globalColors.text}>Terms of User</LinkItem>
-            <LinkItem color={globalColors.text}>Privacy Policy</LinkItem>
-          </Row>
-          <Row>
-            <Credit>&copy; 2022 Tweetalig</Credit>
-          </Row>
-        </Box>
-      </Container>
-    </Footer>
+    <div className="bg-secondary pt-6 flex flex-col">
+      <div className="text-center my-1">
+        <FontAwesomeIcon
+          className="text-4xl px-2 text-text cursor-pointer"
+          icon={faFacebookSquare}
+        />
+        <FontAwesomeIcon
+          className="text-4xl px-2 text-text cursor-pointer"
+          icon={faInstagram}
+        />
+        <FontAwesomeIcon
+          className="text-4xl px-2 text-text cursor-pointer"
+          icon={faTwitterSquare}
+        />
+      </div>
+      <div className="text-center my-1">
+        <div className="text-text inline px-1.5 cursor-pointer">Info</div>
+        <div className="text-text inline px-1.5 cursor-pointer">Support</div>
+        <div className="text-text inline px-1.5 cursor-pointer">Marketing</div>
+      </div>
+      <div className="text-center my-1">
+        <div className="text-text inline px-1.5 cursor-pointer">
+          Terms of User
+        </div>
+        <div className="text-text inline px-1.5 cursor-pointer">
+          Privacy Policy
+        </div>
+      </div>
+      <div className="text-center my-1">
+        <p className="text-slate-400">&copy; 2022 Tweetalig</p>
+      </div>
+    </div>
   );
 };
 

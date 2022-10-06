@@ -3,32 +3,21 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 body {
   font-family: "Poppins", sans-serif;
   background-color: aliceblue;
 }
 
-.container {
-  width: 75%;
-  margin: 0 auto;
+.clip-1 {
+  clip-path: ellipse(100% 59% at 78% 63%);
 }
 
-@media (max-width: 1281px) {
-  .container {
-    width: 85%;
-  }
+.clip-2 {
+  clip-path: ellipse(100% 59% at 25% 64%);
 }
 
-@media (max-width: 600px) {
-  .container {
-    width: 95%;
-  }
+.cs-shadow-text {
+  text-shadow: 3px 4px 7px rgba(0, 0, 0, 0.15);
 }
 
 ::-webkit-scrollbar {

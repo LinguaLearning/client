@@ -5,18 +5,18 @@ import { useAuth } from "../../../context/AuthContext";
 const ProfileInfo = () => {
   const { currentUser, profileDetails } = useAuth();
   return (
-    <>
+    <div>
       <h1 className="text-2xl font-medium">My Profile</h1>
       <div>
-        <div className="flex justify-between my-4">
-          <div>
+        <div className="flex flex-col sm:flex-row justify-between my-4">
+          <div className="flex flex-col max-w-[13rem]">
             <img
               src={profilepicture}
               alt=""
               className="w-52 object-cover aspect-square rounded-full"
             />
             <button
-              className={`block mx-auto mt-4 bg-secondary text-white py-2.5 px-10 rounded font-semibold`}
+              className={`block self-center my-4 sm:mt-4 bg-secondary text-white py-2.5 px-10 rounded font-semibold`}
             >
               Follow
             </button>
@@ -40,7 +40,7 @@ const ProfileInfo = () => {
           <h1 className="text-xl font-semibold">Bio</h1>
           <p>{profileDetails.profileInfo?.bio}</p>
         </div>
-        <div className="flex justify-between my-4">
+        <div className="flex flex-col sm:flex-row justify-between my-4">
           <div style={{ width: "50%" }}>
             <h1 className="text-xl font-semibold">Achievments</h1>
             <div>{profileDetails.profileInfo?.achievments}</div>
@@ -51,7 +51,7 @@ const ProfileInfo = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

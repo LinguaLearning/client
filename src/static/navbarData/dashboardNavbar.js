@@ -57,3 +57,9 @@ export const DropdownMenuData = [
     icon: <FontAwesomeIcon style={{ marginRight: "10px" }} icon={faPowerOff} />,
   },
 ];
+
+export const leftsideMenu = [
+  {
+    tabName: "",
+  },
+];

@@ -4,6 +4,7 @@ import { faPlayCircle } from "@fortawesome/free-solid-svg-icons";
 import franceFlag from "../../../assets/franceFlag.png";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import loadingGif from "../../../assets/loading.gif";
 
 const Lessons = ({ lessonsData }) => {
   const finishedTasks = 1;
@@ -13,46 +14,52 @@ const Lessons = ({ lessonsData }) => {
   return (
     <div className="flex justify-between ">
       <div className="flex flex-1 flex-row flex-wrap">
-        {lessonsData.map((lesson, idx) => (
-          <div
-            className="relative group transition-all duration-300 hover:opacity-95 hover:scale-105 sm:mr-4 md:mr-6 lg:mr-8 my-4 overflow-hidden cursor-pointer rounded-md shadow-[0_3px_8px_rgba(0,0,0,0.24)] w-full h-[50vh] sm:w-[180px] sm:h-[250px] md:w-[210px] md:h-[310px] xl:w-[240] xl:h-[340] 2xl:w-[290px] 2xl:h-[390px]"
-            key={idx}
-          >
-            <img
-              src={lesson.image}
-              className="absolute object-cover rounded-md h-full w-full -z-10"
-              alt=""
-            />
-            <div className="h-1/2 p-3.5">
-              <p className=" text-3xl md:text-[44px] 2xl:text-5xl text-white font-semibold cs-shadow-text">
-                {lesson.title}
-              </p>
-              <p className="text-xl md:text-2xl text-white font-semibold cs-shadow-text">
-                Lesson {lesson.lesson_number}
-              </p>
-            </div>
-            <div className="absolute z-10 flex w-full h-full bottom-0 justify-center items-center">
-              <FontAwesomeIcon
-                className=" transition-all group-hover:text-6xl text-5xl group-hover:text-black text-gray-600 opacity-50"
-                icon={faPlayCircle}
+        {lessonsData.length > 0 ? (
+          lessonsData.map((lesson, idx) => (
+            <div
+              className="relative group transition-all duration-300 hover:opacity-95 hover:scale-105 sm:mr-4 md:mr-6 lg:mr-8 my-4 overflow-hidden cursor-pointer rounded-md shadow-[0_3px_8px_rgba(0,0,0,0.24)] w-full h-[50vh] sm:w-[180px] sm:h-[250px] md:w-[210px] md:h-[310px] xl:w-[240] xl:h-[340] 2xl:w-[290px] 2xl:h-[390px]"
+              key={idx}
+            >
+              <img
+                src={lesson.image}
+                className="absolute object-cover rounded-md h-full w-full -z-10"
+                alt=""
               />
-            </div>
-            <div className="h-1/2 relative">
-              <div className="absolute bottom-0 w-full h-full rounded-md bg-white clip-1" />
-              <div
-                className="absolute bottom-0 w-full h-full rounded-md bg-[#0072bb] clip-2"
-                color="blue"
-              >
-                <div className="flex absolute bottom-4 left-4 items-center">
-                  <img className="w-9 md:w-10" alt="" src={franceFlag} />
-                  <p className="font-bold text-text text-base md:text-xl ml-2.5">
-                    French
-                  </p>
+              <div className="h-1/2 p-3.5">
+                <p className=" text-3xl md:text-[44px] 2xl:text-5xl text-white font-semibold cs-shadow-text">
+                  {lesson.title}
+                </p>
+                <p className="text-xl md:text-2xl text-white font-semibold cs-shadow-text">
+                  Lesson {lesson.lesson_number}
+                </p>
+              </div>
+              <div className="absolute z-10 flex w-full h-full bottom-0 justify-center items-center">
+                <FontAwesomeIcon
+                  className=" transition-all group-hover:text-6xl text-5xl group-hover:text-black text-gray-600 opacity-50"
+                  icon={faPlayCircle}
+                />
+              </div>
+              <div className="h-1/2 relative">
+                <div className="absolute bottom-0 w-full h-full rounded-md bg-white clip-1" />
+                <div
+                  className="absolute bottom-0 w-full h-full rounded-md bg-[#0072bb] clip-2"
+                  color="blue"
+                >
+                  <div className="flex absolute bottom-4 left-4 items-center">
+                    <img className="w-9 md:w-10" alt="" src={franceFlag} />
+                    <p className="font-bold text-text text-base md:text-xl ml-2.5">
+                      French
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
+          ))
+        ) : (
+          <div className="w-full flex justify-center mt-20">
+            <img className="w-40 h-40" src={loadingGif} alt="Loading..." />
           </div>
-        ))}
+        )}
       </div>
       <div className="hidden md:flex flex-col w-64 2xl:w-72 bg-sky-100 rounded-md shadow-[0_3px_8px_rgba(0,0,0,0.24)]">
         <h1 className="font-bold text-4xl text-center m-5 text-secondary">

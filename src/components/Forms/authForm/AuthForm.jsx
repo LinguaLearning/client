@@ -1,24 +1,6 @@
 import React, { useState } from "react";
 import { setDoc, doc } from "firebase/firestore";
 import { auth, db } from "../../../Firebase";
-import {
-  Box,
-  Container,
-  Title,
-  Form,
-  FormElem,
-  Label,
-  FormField,
-  Input,
-  Text,
-  Button,
-  PText,
-  SocialMediaContainer,
-  ImageCircle,
-  SocialLink,
-  SimpleButton,
-  ErrorMessage,
-} from "./AuthFormStyled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -33,7 +15,6 @@ import Instagram from "../../../assets/instagram.png";
 import Twitter from "../../../assets/twitter.png";
 import { useAuth } from "../../../context/AuthContext";
 import { useEffect } from "react";
-import { useColors } from "../../../context/StylingContext/ColorContext";
 
 const AuthForm = ({ formType }) => {
   const navigate = useNavigate();
@@ -51,9 +32,6 @@ const AuthForm = ({ formType }) => {
   const [formTypeState, setFormTypeState] = useState(formType);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-
-  //recieving GlobalColors
-  const globalColors = useColors();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -111,291 +89,309 @@ const AuthForm = ({ formType }) => {
 
   if (formTypeState === "login") {
     return (
-      <Box primary={globalColors.primary}>
-        <Container text={globalColors.text}>
-          <Title secondary={globalColors.secondary}>Login</Title>
-          <ErrorMessage error={globalColors.error}>{error}</ErrorMessage>
-          <Form>
-            <FormElem>
-              <Label>Email</Label>
-              <FormField secondary={globalColors.secondary}>
-                <FontAwesomeIcon icon={faUser} />
-                <Input
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  type="text"
-                  placeholder="Type your email"
-                />
-              </FormField>
-            </FormElem>
-            <FormElem>
-              <Label>Password</Label>
-              <FormField secondary={globalColors.secondary}>
-                <FontAwesomeIcon icon={faKey} />
-                <Input
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  type="password"
-                  placeholder="Type your password"
-                />
-              </FormField>
-            </FormElem>
-            <Link style={{ textDecoration: "none" }} to="/forgotPassword">
-              <Text secondary={globalColors.secondary}>Forgot password?</Text>
-            </Link>
-            <Button
-              primary={globalColors.primary}
-              text={globalColors.text}
-              shadowHard={globalColors.shadowHard}
-              disabled={loading}
-              onClick={handleLogin}
-            >
-              Login
-            </Button>
-          </Form>
-          <PText
-            secondary={globalColors.secondary}
-            style={{
-              textAlign: "center",
-              paddingTop: "15px",
-              paddingBottom: "0px",
-            }}
+      <div className="flex w-screen h-screen bg-primary justify-center items-center">
+        <form
+          onSubmit={handleLogin}
+          className="w-[500px] rounded-3xl bg-text py-16 px-14"
+        >
+          <h1 className="text-4xl mb-4 font-bold text-center text-secondary">
+            Login
+          </h1>
+          <p className="text-error text-lg my-2 text-center">{error}</p>
+
+          <label className="text-sm font-medium my-2">Email</label>
+          <div className="flex items-center border-b text-secondary border-[#8f8f8f] mb-5">
+            <FontAwesomeIcon
+              className="my-3 ml-1 mr-3.5 text-xl"
+              icon={faUser}
+            />
+            <input
+              className="flex flex-1 outline-none text-base"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              placeholder="Type your email"
+            />
+          </div>
+
+          <label className="text-sm font-medium my-2">Password</label>
+          <div className="flex items-center border-b text-secondary border-[#8f8f8f] mb-5">
+            <FontAwesomeIcon
+              className="my-3 ml-1 mr-3.5 text-xl"
+              icon={faKey}
+            />
+            <input
+              className="flex flex-1 outline-none text-base"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              placeholder="Type your password"
+            />
+          </div>
+
+          <Link
+            className="text-right text-sm text-secondary"
+            to="/forgotPassword"
           >
-            Or Sign In Using
-          </PText>
-          <SocialMediaContainer>
-            <SocialLink>
-              <Link to="www.facebook.com">
-                <ImageCircle
-                  style={{ width: "55px", height: "55px" }}
-                  src={Facebook}
-                ></ImageCircle>
-              </Link>
-            </SocialLink>
-            <SocialLink>
-              <Link to="www.instagram.com">
-                <ImageCircle
-                  src={Instagram}
-                  style={{ width: "40px", height: "40px", marginRight: "7px" }}
-                ></ImageCircle>
-              </Link>
-            </SocialLink>
-            <SocialLink>
-              <Link to="www.twitter.com">
-                <ImageCircle
-                  src={Twitter}
-                  style={{ width: "45px", height: "45px" }}
-                ></ImageCircle>
-              </Link>
-            </SocialLink>
-          </SocialMediaContainer>
-          <PText
-            secondary={globalColors.secondary}
-            style={{
-              textAlign: "center",
-              paddingTop: "0px",
-              paddingBottom: "10px",
-            }}
-          >
-            If you do not have an account yet
-          </PText>
-          <Link style={{ textDecoration: "none" }} to="/signup">
-            <SimpleButton secondary={globalColors.secondary}>
-              Sign Up
-            </SimpleButton>
+            <p className="text-right text-sm text-secondary">
+              Forgot password?
+            </p>
           </Link>
-        </Container>
-      </Box>
+
+          <button
+            className="bg-primary text-text font-bold py-4 mt-6 w-full text-lg uppercase transition-all duration-300 hover:bg-shadowHard rounded-full"
+            type="submit"
+            disabled={loading}
+          >
+            Login
+          </button>
+
+          <p className=" text-base text-secondary mt-4 text-center">
+            Or Sign In Using
+          </p>
+          <div className="flex justify-center items-center">
+            <Link
+              className="transition-all duration-300 hover:scale-110"
+              to="www.facebook.com"
+            >
+              <img alt="" className="w-14 aspect-square m-1" src={Facebook} />
+            </Link>
+
+            <Link
+              className="transition-all duration-300 hover:scale-110"
+              to="www.instagram.com"
+            >
+              <img alt="" className="w-10 aspect-square m-1" src={Instagram} />
+            </Link>
+
+            <Link
+              className="transition-all duration-300 hover:scale-110"
+              to="www.twitter.com"
+            >
+              <img alt="" className="w-11 aspect-square m-2.5" src={Twitter} />
+            </Link>
+          </div>
+          <p className="text-[15px] text-secondary pb-2.5 text-center">
+            If you do not have an account yet
+          </p>
+          <Link to="/signup">
+            <p className="text-center font-semibold text-[15px] text-secondary">
+              Sign Up
+            </p>
+          </Link>
+        </form>
+      </div>
     );
   } else if (formTypeState === "signup") {
     return (
-      <Box primary={globalColors.primary}>
-        <Container text={globalColors.text}>
-          <Title secondary={globalColors.secondary}>Signup</Title>
-          <ErrorMessage error={globalColors.error}>{error}</ErrorMessage>
-          <Form>
-            <FormElem>
-              <Label>Username</Label>
-              <FormField secondary={globalColors.secondary}>
-                <FontAwesomeIcon icon={faUser} />
-                <Input
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  type="text"
-                  placeholder="Type your username"
-                />
-              </FormField>
-            </FormElem>
-            <FormElem>
-              <Label>Email</Label>
-              <FormField secondary={globalColors.secondary}>
-                <FontAwesomeIcon icon={faEnvelope} />
-                <Input
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  type="email"
-                  placeholder="Type your email"
-                />
-              </FormField>
-            </FormElem>
-            <FormElem>
-              <Label>Password</Label>
-              <FormField secondary={globalColors.secondary}>
-                <FontAwesomeIcon icon={faKey} />
-                <Input
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  type="password"
-                  placeholder="Type your password"
-                />
-              </FormField>
-            </FormElem>
-            <FormElem>
-              <Label>Password</Label>
-              <FormField secondary={globalColors.secondary}>
-                <FontAwesomeIcon icon={faKey} />
-                <Input
-                  value={passwordConfirmation}
-                  onChange={(e) => setPasswordConfirmation(e.target.value)}
-                  type="password"
-                  placeholder="Confirm your password"
-                />
-              </FormField>
-            </FormElem>
+      <div className="flex w-screen h-screen bg-primary justify-center items-center">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            setFormTypeState("signUpExtra");
+          }}
+          className="w-[500px] rounded-3xl bg-text py-10 px-14"
+        >
+          <h1 className="text-4xl mb-4 font-bold text-center text-secondary">
+            Signup
+          </h1>
+          <p className="text-error text-lg my-2 text-center">{error}</p>
 
-            <Button
-              primary={globalColors.primary}
-              text={globalColors.text}
-              shadowHard={globalColors.shadowHard}
-              disabled={loading}
-              // onClick={handleSignUp}
-              onClick={(e) => {
-                e.preventDefault();
-                setFormTypeState("signUpExtra");
-              }}
-            >
-              Sign Up
-            </Button>
-          </Form>
-          <PText
-            secondary={globalColors.secondary}
-            style={{
-              textAlign: "center",
-              paddingTop: "15px",
-              paddingBottom: "0px",
-            }}
+          <label className="text-sm font-medium my-2">Username</label>
+          <div className="flex items-center border-b text-secondary border-[#8f8f8f] mb-5">
+            <FontAwesomeIcon
+              className="my-3 ml-1 mr-3.5 text-xl"
+              icon={faUser}
+            />
+            <input
+              className="flex flex-1 outline-none text-base"
+              required
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              type="text"
+              placeholder="Type your username"
+            />
+          </div>
+
+          <label className="text-sm font-medium my-2">Email</label>
+          <div className="flex items-center border-b text-secondary border-[#8f8f8f] mb-5">
+            <FontAwesomeIcon
+              className="my-3 ml-1 mr-3.5 text-xl"
+              icon={faEnvelope}
+            />
+            <input
+              className="flex flex-1 outline-none text-base"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              placeholder="Type your email"
+            />
+          </div>
+
+          <label className="text-sm font-medium my-2">Password</label>
+          <div className="flex items-center border-b text-secondary border-[#8f8f8f] mb-5">
+            <FontAwesomeIcon
+              className="my-3 ml-1 mr-3.5 text-xl"
+              icon={faKey}
+            />
+            <input
+              className="flex flex-1 outline-none text-base"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              placeholder="Type your password"
+            />
+          </div>
+
+          <label className="text-sm font-medium my-2">Confirm Password</label>
+          <div className="flex items-center border-b text-secondary border-[#8f8f8f] mb-5">
+            <FontAwesomeIcon
+              className="my-3 ml-1 mr-3.5 text-xl"
+              icon={faKey}
+            />
+            <input
+              className="flex flex-1 outline-none text-base"
+              required
+              value={passwordConfirmation}
+              onChange={(e) => setPasswordConfirmation(e.target.value)}
+              type="password"
+              placeholder="Confirm your password"
+            />
+          </div>
+
+          <button
+            className="bg-primary text-text font-bold py-4 mt-1 w-full text-lg uppercase transition-all duration-300 hover:bg-shadowHard rounded-full"
+            type="submit"
+            disabled={loading}
           >
+            Sign Up
+          </button>
+
+          <p className=" text-base text-secondary mt-4 text-center">
             Or Sign Up Using
-          </PText>
-          <SocialMediaContainer>
-            <SocialLink>
-              <Link to="www.facebook.com">
-                <ImageCircle
-                  style={{ width: "55px", height: "55px" }}
-                  src={Facebook}
-                ></ImageCircle>
-              </Link>
-            </SocialLink>
-            <SocialLink>
-              <Link to="www.instagram.com">
-                <ImageCircle
-                  src={Instagram}
-                  style={{ width: "40px", height: "40px", marginRight: "7px" }}
-                ></ImageCircle>
-              </Link>
-            </SocialLink>
-            <SocialLink>
-              <Link to="www.twitter.com">
-                <ImageCircle
-                  src={Twitter}
-                  style={{ width: "45px", height: "45px" }}
-                ></ImageCircle>
-              </Link>
-            </SocialLink>
-          </SocialMediaContainer>
-          <PText
-            secondary={globalColors.secondary}
-            style={{
-              textAlign: "center",
-              paddingTop: "0px",
-              paddingBottom: "10px",
-            }}
-          >
+          </p>
+
+          <div className="flex justify-center items-center">
+            <Link
+              className="transition-all duration-300 hover:scale-110"
+              to="www.facebook.com"
+            >
+              <img alt="" className="w-14 aspect-square m-1" src={Facebook} />
+            </Link>
+
+            <Link
+              className="transition-all duration-300 hover:scale-110"
+              to="www.instagram.com"
+            >
+              <img alt="" className="w-10 aspect-square m-1" src={Instagram} />
+            </Link>
+
+            <Link
+              className="transition-all duration-300 hover:scale-110"
+              to="www.twitter.com"
+            >
+              <img alt="" className="w-11 aspect-square m-2.5" src={Twitter} />
+            </Link>
+          </div>
+          <p className="text-[15px] text-secondary pb-2.5 text-center">
             If you have an account
-          </PText>
-          <Link style={{ textDecoration: "none" }} to="/login">
-            <SimpleButton>Login</SimpleButton>
+          </p>
+          <Link to="/login">
+            <p className="text-center font-semibold text-[15px] text-secondary">
+              Login
+            </p>
           </Link>
-        </Container>
-      </Box>
+        </form>
+      </div>
     );
   } else if (formTypeState === "signUpExtra") {
     return (
-      <Box primary={globalColors.primary}>
-        <Container text={globalColors.text}>
-          <Title secondary={globalColors.secondary}>Signup</Title>
-          <ErrorMessage error={globalColors.error}>{error}</ErrorMessage>
-          <Form>
-            <FormElem>
-              <Label>First Name</Label>
-              <FormField secondary={globalColors.secondary}>
-                <FontAwesomeIcon icon={faUser} />
-                <Input
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  type="text"
-                  placeholder="Type First Name"
-                />
-              </FormField>
-            </FormElem>
-            <FormElem>
-              <Label>Surname</Label>
-              <FormField secondary={globalColors.secondary}>
-                <FontAwesomeIcon icon={faUser} />
-                <Input
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  type="text"
-                  placeholder="Type Surname"
-                />
-              </FormField>
-            </FormElem>
-            <FormElem>
-              <Label>Phone Number</Label>
-              <FormField secondary={globalColors.secondary}>
-                <FontAwesomeIcon icon={faPhone} />
-                <Input
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                  type="text"
-                  placeholder="Type Phone Number With Country Prefix ex.: (+355)"
-                />
-              </FormField>
-            </FormElem>
-            <FormElem>
-              <Label>Birthday</Label>
-              <FormField secondary={globalColors.secondary}>
-                <FontAwesomeIcon icon={faCalendar} />
-                <Input
-                  value={birthDate}
-                  onChange={(e) => setBirthDate(e.target.value)}
-                  type="date"
-                />
-              </FormField>
-            </FormElem>
+      <div className="flex w-screen h-screen bg-primary justify-center items-center">
+        <form
+          onSubmit={handleSignUp}
+          className="w-[500px] rounded-3xl bg-text py-16 px-14"
+        >
+          <h1 className="text-4xl mb-4 font-bold text-center text-secondary">
+            Signup
+          </h1>
+          <p className="text-error text-lg my-2 text-center">{error}</p>
 
-            <Button
-              primary={globalColors.primary}
-              text={globalColors.text}
-              shadowHard={globalColors.shadowHard}
-              disabled={loading}
-              onClick={handleSignUp}
-            >
-              Sign Up
-            </Button>
-          </Form>
-        </Container>
-      </Box>
+          <label className="text-sm font-medium my-2">First Name</label>
+          <div className="flex items-center border-b text-secondary border-[#8f8f8f] mb-5">
+            <FontAwesomeIcon
+              className="my-3 ml-1 mr-3.5 text-xl"
+              icon={faUser}
+            />
+            <input
+              className="flex flex-1 outline-none text-base"
+              required
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              type="text"
+              placeholder="Type First Name"
+            />
+          </div>
+
+          <label className="text-sm font-medium my-2">Surname</label>
+          <div className="flex items-center border-b text-secondary border-[#8f8f8f] mb-5">
+            <FontAwesomeIcon
+              className="my-3 ml-1 mr-3.5 text-xl"
+              icon={faUser}
+            />
+            <input
+              className="flex flex-1 outline-none text-base"
+              required
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              type="text"
+              placeholder="Type Surname"
+            />
+          </div>
+
+          <label className="text-sm font-medium my-2">Phone Number</label>
+          <div className="flex items-center border-b text-secondary border-[#8f8f8f] mb-5">
+            <FontAwesomeIcon
+              className="my-3 ml-1 mr-3.5 text-xl"
+              icon={faPhone}
+            />
+            <input
+              className="flex flex-1 outline-none text-base"
+              required
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              type="text"
+              placeholder="Type Phone Number With Country Prefix ex.: (+355)"
+            />
+          </div>
+
+          <label className="text-sm font-medium my-2">Birthday</label>
+          <div className="flex items-center border-b text-secondary border-[#8f8f8f] mb-5">
+            <FontAwesomeIcon
+              className="my-3 ml-1 mr-3.5 text-xl"
+              icon={faCalendar}
+            />
+            <input
+              className="flex flex-1 outline-none text-base"
+              required
+              value={birthDate}
+              onChange={(e) => setBirthDate(e.target.value)}
+              type="date"
+            />
+          </div>
+
+          <button
+            className="bg-primary text-text font-bold py-4 mt-6 w-full text-lg uppercase transition-all duration-300 hover:bg-shadowHard rounded-full"
+            type="submit"
+            disabled={loading}
+          >
+            Sign Up
+          </button>
+        </form>
+      </div>
     );
   }
 };

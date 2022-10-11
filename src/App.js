@@ -1,12 +1,7 @@
 import RouterManagement from "./router/RouterManagement";
-import { ColorProvider } from "./context/StylingContext/ColorContext";
 
 function App() {
-  return (
-    <ColorProvider>
-      <RouterManagement />
-    </ColorProvider>
-  );
+  return <RouterManagement />;
 }
 
 export default App;

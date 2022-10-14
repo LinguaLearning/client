@@ -20,8 +20,8 @@ const Lessons = ({ lessonsData }) => {
         {lessonsData.length > 0 ? (
           lessonsData.map((lesson, idx) => (
             <div
+              className="relative group transition-all duration-300 hover:opacity-95 hover:scale-105 xs:mr-4 md:mr-6 lg:mr-8 my-4 overflow-hidden cursor-pointer rounded-md shadow-[0_3px_8px_rgba(0,0,0,0.24)] w-full h-[50vh] xs:w-[180px] xs:h-[250px] md:w-[210px] md:h-[310px] xl:w-[240] xl:h-[340] 2xl:w-[290px] 2xl:h-[390px]"
               key={idx}
-              className="relative group transition-all duration-300 hover:opacity-95 hover:scale-105 sm:mr-4 md:mr-6 lg:mr-8 my-4 overflow-hidden cursor-pointer rounded-md shadow-[0_3px_8px_rgba(0,0,0,0.24)] w-full h-[50vh] sm:w-[180px] sm:h-[250px] md:w-[210px] md:h-[310px] xl:w-[240] xl:h-[340] 2xl:w-[290px] 2xl:h-[390px]"
             >
               <Link
                 key={idx}

@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PrivateRoutes from "./PrivateRoutes";
+import PrivateRoutesWithoutLayout from "./PrivateRoutesWithoutLayout";
 import { AuthProvider } from "../context/AuthContext";
 import {
   HomePageView,
@@ -15,6 +16,7 @@ import {
   DashboardResources,
   MyProfile,
   UserSettings,
+  LessonView,
 } from "../views";
 import { Layout } from "../components";
 
@@ -41,6 +43,10 @@ const RouterManagement = () => {
             <Route path="resources" element={<DashboardResources />} />
             <Route path="my_profile" element={<MyProfile />} />
             <Route path="settings" element={<UserSettings />} />
+          </Route>
+
+          <Route path="dashboard" element={<PrivateRoutesWithoutLayout />}>
+            <Route path="lesson" element={<LessonView />}></Route>
           </Route>
         </Routes>
       </AuthProvider>

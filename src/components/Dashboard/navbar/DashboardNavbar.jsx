@@ -128,6 +128,7 @@ const DashboardNavbar = () => {
             {dashboardDataNavbar.map((navItem) => (
               <Link
                 to={navItem.path}
+                key={navItem.path}
                 onClick={() => setBarStatus(!barStatus)}
                 style={{ textDecoration: "none" }}
               >
@@ -235,111 +236,6 @@ const DashboardNavbar = () => {
         </div>
       )}
     </div>
-    // <Box secondary={globalColors.secondary} text={globalColors.text}>
-
-    //   {barStatus && (
-    //     <SideBar bgColor={globalColors.secondary}>
-    //       <Xbar>
-    //         <FontAwesomeIcon
-    //           onClick={() => setBarStatus(false)}
-    //           icon={faXmark}
-    //         ></FontAwesomeIcon>
-    //       </Xbar>
-    //       <SidebarList>
-    //         <Link
-    //           to="/dashboard/learning"
-    //           onClick={() => setBarStatus(!barStatus)}
-    //           style={{ textDecoration: "none" }}
-    //         >
-    //           <ListItem color={globalColors.text}>Learning</ListItem>
-    //         </Link>
-    //         <Link
-    //           to="/dashboard/tools"
-    //           onClick={() => setBarStatus(!barStatus)}
-    //           style={{ textDecoration: "none" }}
-    //         >
-    //           <ListItem color={globalColors.text}>Tools</ListItem>
-    //         </Link>
-    //         <Link
-    //           to="/dashboard/resource"
-    //           onClick={() => setBarStatus(!barStatus)}
-    //           style={{ textDecoration: "none" }}
-    //         >
-    //           <ListItem color={globalColors.text}>Resources</ListItem>
-    //         </Link>
-    //         <Link
-    //           to="/dashboard/community"
-    //           onClick={() => setBarStatus(!barStatus)}
-    //           style={{ textDecoration: "none" }}
-    //         >
-    //           <SideButton color={globalColors.secondary}>
-    //             <FontAwesomeIcon
-    //               style={{ marginRight: "6px", fontSize: "30px" }}
-    //               icon={faUsers}
-    //             ></FontAwesomeIcon>
-    //             Community
-    //           </SideButton>
-    //         </Link>
-    //         <Link
-    //           to="/dashboard/socialMedia"
-    //           onClick={() => setBarStatus(!barStatus)}
-    //           style={{ textDecoration: "none" }}
-    //         >
-    //           <SideButton color={globalColors.secondary}>
-    //             <FontAwesomeIcon
-    //               style={{ marginRight: "6px", fontSize: "30px" }}
-    //               icon={faBell}
-    //             ></FontAwesomeIcon>
-    //             Notifications
-    //           </SideButton>
-    //         </Link>
-    //         <Link
-    //           to="/dashboard/community"
-    //           onClick={() => setBarStatus(!barStatus)}
-    //           style={{ textDecoration: "none" }}
-    //         >
-    //           <SideButton color={globalColors.secondary}>
-    //             <Image
-    //               style={{ width: "30px", height: "30px" }}
-    //               src={russianFlag}
-    //             />
-    //             Language
-    //           </SideButton>
-    //         </Link>
-    //         <Link
-    //           to="/dashboard/community"
-    //           onClick={() => setBarStatus(!barStatus)}
-    //           style={{ textDecoration: "none" }}
-    //         >
-    //           <SideButton color={globalColors.secondary}>
-    //             <Image
-    //               style={{ width: "30px", height: "30px" }}
-    //               src={avatarSample}
-    //             />
-    //             Profile
-    //           </SideButton>
-    //         </Link>
-    //         <Link
-    //           to="/"
-    //           onClick={() => setBarStatus(!barStatus)}
-    //           style={{ textDecoration: "none" }}
-    //         >
-    //           <OfferButton
-    //             style={{ width: "100%", fontSize: "14px" }}
-    //             secondary={globalColors.secondary}
-    //           >
-    //             <FontAwesomeIcon
-    //               style={{ marginRight: "6px" }}
-    //               icon={faCrown}
-    //             ></FontAwesomeIcon>
-    //             60% off Premium
-    //           </OfferButton>
-    //         </Link>
-    //       </SidebarList>
-    //     </SideBar>
-    //   )}
-    //
-    // </Box>
   );
 };
 

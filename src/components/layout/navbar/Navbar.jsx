@@ -65,6 +65,7 @@ const Navbar = () => {
             {NavbarData.map((navItem) => (
               <Link
                 to={navItem.path}
+                key={navItem.path}
                 onClick={() => setBarStatus(!barStatus)}
                 style={{ textDecoration: "none" }}
               >

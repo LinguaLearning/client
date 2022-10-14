@@ -15,3 +15,4 @@ export { default as LanguageTab } from "./Dashboard/editSettings/settingTabs/Lan
 export { default as Lessons } from "./Dashboard/DashboardAction/Lessons";
 export { default as Tools } from "./Dashboard/DashboardAction/Tools";
 export { default as Resources } from "./Dashboard/DashboardAction/Resources";
+export { default as Lesson } from "./Dashboard/lesson/Lesson";

@@ -1,25 +1,11 @@
 import React from "react";
+import WriteDownPracticeType from "../lessonTypes/practice/WriteDownPracticeType";
 
 const Lesson = ({ cardNr, selLesson }) => {
-  //! Component Plugins
-  const LearnANewWorld = () => {
-    return <div>New Word</div>;
-  };
-
-  const practiceAWord = () => {
-    return <div>Practice a Word</div>;
-  };
-
-  const confidence = () => {
-    return <div>How Confident are you with this Word</div>;
-  };
-
-  const allPlugins = [LearnANewWorld, practiceAWord, confidence];
-
   return (
     <div>
       <div>
-        {selLesson.description} - {cardNr}
+        <WriteDownPracticeType />
       </div>
     </div>
   );

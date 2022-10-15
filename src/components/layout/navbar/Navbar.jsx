@@ -57,6 +57,7 @@ const Navbar = () => {
               <Link
                 key={navItem.path}
                 to={navItem.path}
+                key={navItem.path}
                 onClick={() => setBarStatus(!barStatus)}
               >
                 <div className="font-semibold text-[33px] py-2.5 text-center text-text">

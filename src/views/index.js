@@ -10,3 +10,4 @@ export { default as DashboardTools } from "./private/DashboardTools";
 export { default as DashboardResources } from "./private/DashboardResources";
 export { default as MyProfile } from "./private/MyProfile";
 export { default as UserSettings } from "./private/UserSettings";
+export { default as LessonView } from "./private/LessonView";

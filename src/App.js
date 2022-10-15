@@ -1,7 +1,12 @@
 import RouterManagement from "./router/RouterManagement";
+import LessonProvider from "./context/lessonsContext/LessonContext";
 
 function App() {
-  return <RouterManagement />;
+  return (
+    <LessonProvider>
+      <RouterManagement />
+    </LessonProvider>
+  );
 }
 
 export default App;

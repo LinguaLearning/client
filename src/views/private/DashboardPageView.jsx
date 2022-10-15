@@ -8,8 +8,6 @@ const DashboardPageView = () => {
     getAllLessons().then((data) => setLessonsData(data));
   }, []);
 
-  console.log(lessonsData);
-
   getAllLessons();
   return (
     <div className="mx-auto my-10 w-[85%] lg:w-[80%]">

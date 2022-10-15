@@ -95,7 +95,12 @@ const DashboardNavbar = () => {
           </div>
           <div>
             {dashboardDataNavbar.map((navItem) => (
-              <Link to={navItem.path} onClick={() => setBarStatus(!barStatus)}>
+              <Link
+                to={navItem.path}
+                key={navItem.path}
+                onClick={() => setBarStatus(!barStatus)}
+                style={{ textDecoration: "none" }}
+              >
                 <div className="font-semibold text-[33px] py-2.5 text-center text-text">
                   {navItem.tabName}
                 </div>

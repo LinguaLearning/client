@@ -1,14 +1,9 @@
 import { Lessons } from "../../components";
-import { getAllLessons } from "../../server/lessons";
-import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const DashboardPageView = () => {
-  const [lessonsData, setLessonsData] = useState([]);
-  useEffect(() => {
-    getAllLessons().then((data) => setLessonsData(data));
-  }, []);
+  const lessonsData = useSelector((state) => state.lessons.allLessons);
 
-  getAllLessons();
   return (
     <div className="mx-auto my-10 w-[85%] lg:w-[80%]">
       <h1 className="text-secondary text-4xl font-bold">The Lessons</h1>

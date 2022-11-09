@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useRef } from "react";
 
-const Audio = () => {
+const Audio = ({ audio }) => {
+  const audioToBePlayed = useRef(null);
+
+  const playAudio = () => {
+    audioToBePlayed.current.play();
+  };
+
   return (
     <article className="group relative flex h-[12rem] w-[50rem] overflow-hidden rounded-2xl bg-[#3a4448]">
       <aside className="absolute right-0 flex h-full flex-col justify-center space-y-8 p-3">
@@ -37,17 +43,19 @@ const Audio = () => {
 
       <div className="absolute inset-y-0 left-0 w-48">
         <img
-          src="https://images.unsplash.com/photo-1557457898-61da8848d599?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80"
+          src={audio.audioImg}
           alt=""
           className="h-full w-full object-cover object-center opacity-95"
         />
 
         <div className="invisible absolute inset-0 flex h-full w-full items-center justify-center bg-[#0c0c0c]/70 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+          <audio ref={audioToBePlayed} src={audio.audio} autoPlay></audio>
           <svg
             className="h-w-14 w-14 cursor-pointer text-white transition-all duration-200 hover:text-yellow-400"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
+            onClick={playAudio}
           >
             <path
               fillRule="evenodd"
@@ -61,8 +69,7 @@ const Audio = () => {
       <div className="absolute inset-y-0 left-44 w-[39rem] overflow-hidden rounded-2xl transition-all duration-200 group-hover:w-[36rem]">
         <div
           style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1557457898-61da8848d599?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80')",
+            backgroundImage: `url(${audio.audioImg})`,
           }}
           className="h-full w-full bg-cover bg-center"
         >
@@ -71,7 +78,7 @@ const Audio = () => {
 
         <section className="absolute inset-0 flex flex-col justify-between p-4 text-white">
           <header className="space-y-1">
-            <div className="text-3xl font-medium">Bonjour</div>
+            <div className="text-3xl font-medium">{audio.word2}</div>
           </header>
 
           <div className="invisible flex space-x-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100"></div>

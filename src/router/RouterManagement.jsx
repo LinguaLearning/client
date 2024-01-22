@@ -46,7 +46,7 @@ const RouterManagement = () => {
           </Route>
 
           <Route path="dashboard" element={<PrivateRoutesWithoutLayout />}>
-            <Route path="lesson" element={<LessonView />}></Route>
+            {/* <Route path="lesson" element={<LessonView />}></Route> */}
           </Route>
         </Routes>
       </AuthProvider>

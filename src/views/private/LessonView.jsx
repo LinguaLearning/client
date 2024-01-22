@@ -3,23 +3,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { Lesson } from "../../components";
-import { useSelector } from "react-redux";
 import { LessonContext } from "../../context/lessonsContext/LessonContext";
 import Finish from "../../components/Dashboard/lessonTypes/finish/Finish";
 
 const LessonView = () => {
-  let containerData = useSelector(
-    (state) => state.lessonContainer.currentContainer
-  );
   const { selectedLesson } = useContext(LessonContext);
   let fullContainerLessonsCount = selectedLesson.lesson_container.length;
-  let percentage =
-    JSON.stringify(((containerData + 1) / fullContainerLessonsCount) * 100) +
-    "%";
+  // let percentage =
+  //   JSON.stringify(((containerData + 1) / fullContainerLessonsCount) * 100) +
+  //   "%";
 
   return (
     <>
-      {containerData !== fullContainerLessonsCount ? (
+      {/* {containerData !== fullContainerLessonsCount ? (
         <div>
           <div className="w-[90%] mx-auto my-10 flex justify-center items-center">
             <div className="w-1/4 flex justify-start">test</div>
@@ -48,7 +44,7 @@ const LessonView = () => {
             <Finish />
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 };

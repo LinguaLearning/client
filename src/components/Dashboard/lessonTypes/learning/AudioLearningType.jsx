@@ -1,6 +1,6 @@
 import React from "react";
-import Audio from "../../../../utilities/audio/Audio";
-import LessonButtonsController from "../../../../utilities/buttonsController/LessonButtonsController";
+import Audio from "../../../../lib/utilities/audio/Audio";
+import LessonButtonsController from "../../../../lib/utilities/buttonsController/LessonButtonsController";
 
 const AudioLearningType = ({ info }) => {
   return (

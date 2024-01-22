@@ -10,9 +10,9 @@ import {
   faPhone,
   faCalendar,
 } from "@fortawesome/free-solid-svg-icons";
-import Facebook from "../../../assets/facebook-icon-preview.png";
-import Instagram from "../../../assets/instagram.png";
-import Twitter from "../../../assets/twitter.png";
+import Facebook from "../../../lib/assets/facebook-icon-preview.png";
+import Instagram from "../../../lib/assets/instagram.png";
+import Twitter from "../../../lib/assets/twitter.png";
 import { useAuth } from "../../../context/AuthContext";
 import { useEffect } from "react";
 

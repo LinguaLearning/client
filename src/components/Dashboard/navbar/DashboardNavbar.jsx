@@ -8,10 +8,10 @@ import {
   faBars,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
-import russianFlag from "../../../assets/Flag_of_Russia.svg.png";
-import avatarSample from "../../../assets/avatar.jpg";
-import { dashboardDataNavbar } from "../../../static/navbarData/dashboardNavbar";
-import { DropdownMenuData } from "../../../static/navbarData/dashboardNavbar";
+import russianFlag from "../../../lib/assets/Flag_of_Russia.svg.png";
+import avatarSample from "../../../lib/assets/avatar.jpg";
+import { dashboardDataNavbar } from "../../../lib/static/navbarData/dashboardNavbar";
+import { DropdownMenuData } from "../../../lib/static/navbarData/dashboardNavbar";
 import { useAuth } from "../../../context/AuthContext";
 
 const DashboardNavbar = () => {

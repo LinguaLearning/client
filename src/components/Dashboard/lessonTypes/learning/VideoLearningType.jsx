@@ -1,5 +1,5 @@
 import React from "react";
-import LessonButtonsController from "../../../../utilities/buttonsController/LessonButtonsController";
+import LessonButtonsController from "../../../../lib/utilities/buttonsController/LessonButtonsController";
 
 const VideoLearningType = ({ info }) => {
   return (

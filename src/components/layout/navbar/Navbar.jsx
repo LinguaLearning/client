@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { NavbarData } from "../../../static/navbarData/pageNavbar";
+import { NavbarData } from "../../../lib/static/navbarData/pageNavbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Audio from "../../../../utilities/audio/Audio";
+import Audio from "../../../../lib/utilities/audio/Audio";
 
 const VoicePracticeType = () => {
   return (

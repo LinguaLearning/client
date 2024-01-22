@@ -1,18 +1,18 @@
 import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlayCircle } from "@fortawesome/free-solid-svg-icons";
-import franceFlag from "../../../assets/franceFlag.png";
+import franceFlag from "../../../lib/assets/franceFlag.png";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import loadingGif from "../../../assets/loading.gif";
+import loadingGif from "../../../lib/assets/loading.gif";
 import { Link } from "react-router-dom";
-import { LessonContext } from "../../../context/lessonsContext/LessonContext";
+// import { LessonContext } from "../../../context/lessonsContext/LessonContext";
 
 const Lessons = ({ lessonsData }) => {
   const finishedTasks = 1;
   const allTasks = lessonsData.length;
   const percentage = Math.round((finishedTasks / allTasks) * 10000) / 100;
-  const { setSelectedLesson } = useContext(LessonContext);
+  // const { setSelectedLesson } = useContext(LessonContext);
 
   return (
     <div className="flex justify-between ">
@@ -26,19 +26,19 @@ const Lessons = ({ lessonsData }) => {
               <Link
                 key={idx}
                 to="/dashboard/lesson"
-                onClick={() => setSelectedLesson(lesson)}
+                // onClick={() => setSelectedLesson(lesson)}
               >
                 <img
-                  src={lesson.image}
+                  src={lesson.lessonImg}
                   className="absolute object-cover rounded-md h-full w-full -z-10"
                   alt=""
                 />
                 <div className="h-1/2 p-3.5">
                   <p className=" text-3xl md:text-[44px] 2xl:text-5xl text-white font-semibold cs-shadow-text">
-                    {lesson.title}
+                    {lesson.name}
                   </p>
                   <p className="text-xl md:text-2xl text-white font-semibold cs-shadow-text">
-                    Lesson {lesson.lesson_number}
+                    Lesson {lesson.lessonOrder}
                   </p>
                 </div>
                 <div className="absolute z-10 flex w-full h-full bottom-0 justify-center items-center">

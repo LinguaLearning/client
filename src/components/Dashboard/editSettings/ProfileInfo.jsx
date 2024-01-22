@@ -1,5 +1,5 @@
 import React from "react";
-import profilepicture from "../../../assets/avatar.jpg";
+import profilepicture from "../../../lib/assets/avatar.jpg";
 import { useAuth } from "../../../context/AuthContext";
 
 const ProfileInfo = () => {

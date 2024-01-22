@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { HiOutlineMail } from "react-icons/hi";
 import { FiFacebook } from "react-icons/fi";
-import { NavbarData } from "../../../static/navbarData/pageNavbar";
+import { NavbarData } from "../../../lib/static/navbarData/pageNavbar";
 
 const Footer = () => {
   return (

@@ -1,8 +1,8 @@
 import { Lessons } from "../../components";
-import { useSelector } from "react-redux";
+import { useLessons } from "../../lib/api/lessons";
 
 const DashboardPageView = () => {
-  const lessonsData = useSelector((state) => state.lessons.allLessons);
+  const {data: lessonsData} = useLessons();
 
   return (
     <div className="mx-auto my-10 w-[85%] lg:w-[80%]">
